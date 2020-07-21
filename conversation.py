@@ -11,7 +11,7 @@ class Conversation:
     def insert_intention(self, intention):
         self.intentions.append(intention)
 
-    def get_response(self, question):
+    def get_response(self, question, no_responses):
 
         responses = []
         action = """"""
@@ -46,10 +46,7 @@ class Conversation:
             return responses[randint(0,len(responses)-1)]
         else:
             if not self.current_intention:
-                responses.append("Desculpe, não entendi o que você falou")
-                responses.append("Sinto muito, não consegui te entender")
-                responses.append("Ops, não entendi o que você disse")
-                return responses[randint(0,len(responses)-1)]
+                return no_responses[randint(0,len(no_responses)-1)]
             else:
                 self.current_intention = None
                 return self.get_response(question)
